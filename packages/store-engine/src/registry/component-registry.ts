@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react';
 
-type AnyProps = Record<string, unknown>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AnyComponentType = ComponentType<any>;
 
 /**
  * ComponentRegistry — maps string type names to actual React components.
@@ -22,13 +23,13 @@ type AnyProps = Record<string, unknown>;
  * ```
  */
 export class ComponentRegistry {
-  private components = new Map<string, ComponentType<AnyProps>>();
+  private components = new Map<string, AnyComponentType>();
 
   /**
    * Register a component under a type name.
    * @throws if the type name is already registered (use `override` to replace)
    */
-  register(type: string, component: ComponentType<AnyProps>): void {
+  register(type: string, component: AnyComponentType): void {
     if (this.components.has(type)) {
       throw new Error(
         `Component type "${type}" is already registered. Use override() to replace it.`
@@ -40,7 +41,7 @@ export class ComponentRegistry {
   /**
    * Register multiple components at once.
    */
-  registerAll(components: Record<string, ComponentType<AnyProps>>): void {
+  registerAll(components: Record<string, AnyComponentType>): void {
     for (const [type, component] of Object.entries(components)) {
       this.register(type, component);
     }
@@ -49,7 +50,7 @@ export class ComponentRegistry {
   /**
    * Override an existing registration (or register if new).
    */
-  override(type: string, component: ComponentType<AnyProps>): void {
+  override(type: string, component: AnyComponentType): void {
     this.components.set(type, component);
   }
 
@@ -57,7 +58,7 @@ export class ComponentRegistry {
    * Resolve a component type string to the actual React component.
    * @returns The component, or undefined if not found
    */
-  resolve(type: string): ComponentType<AnyProps> | undefined {
+  resolve(type: string): AnyComponentType | undefined {
     return this.components.get(type);
   }
 

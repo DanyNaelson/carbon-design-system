@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Card } from '@yourorg/design-system';
+import { Card } from './Card';
 
-const meta = {
+const meta: Meta<typeof Card> = {
   title: 'Components/Card',
   component: Card,
   argTypes: {
@@ -9,7 +9,7 @@ const meta = {
     subtitle: { control: 'text' },
     onClick: { action: 'clicked' },
   },
-} satisfies Meta<typeof Card>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;

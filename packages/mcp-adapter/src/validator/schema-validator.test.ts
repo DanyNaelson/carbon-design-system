@@ -5,7 +5,7 @@ import {
   validatePayload,
   validateFullMessage,
 } from './schema-validator';
-import { McpMessageSchema, CreateStorePayloadSchema } from '../types';
+import { CreateStorePayloadSchema } from '../types';
 
 describe('validate', () => {
   it('returns success for valid data', () => {

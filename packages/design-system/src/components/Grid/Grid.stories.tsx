@@ -1,9 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Grid, Column } from '@yourorg/design-system';
+import { Grid, Column } from './Grid';
 
-const meta = {
+const meta: Meta<typeof Grid> = {
   title: 'Components/Grid',
   component: Grid,
+  args: {
+    children: null,
+  },
   argTypes: {
     narrow: { control: 'boolean' },
     condensed: { control: 'boolean' },
@@ -17,12 +20,12 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta<typeof Grid>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-function Cell({ children }: { children: React.ReactNode }) {
+function Cell({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <div
       style={{

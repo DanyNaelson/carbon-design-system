@@ -1,6 +1,8 @@
-import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { ThemeProvider, useTheme, Button, Card, Grid, Column } from '@yourorg/design-system';
+import { ThemeProvider, useTheme } from './ThemeProvider';
+import { Button } from '../components/Button/Button';
+import { Card } from '../components/Card/Card';
+import { Grid, Column } from '../components/Grid/Grid';
 
 function ThemeDemo() {
   const { mode, toggleTheme } = useTheme();
@@ -37,11 +39,11 @@ function ThemeWrapper() {
   return null;
 }
 
-const meta = {
+const meta: Meta<typeof ThemeWrapper> = {
   title: 'Providers/ThemeProvider',
   component: ThemeWrapper,
   parameters: { layout: 'fullscreen' },
-} satisfies Meta<typeof ThemeWrapper>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;

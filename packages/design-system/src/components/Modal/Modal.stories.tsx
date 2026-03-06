@@ -1,11 +1,17 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Modal } from '@yourorg/design-system';
-import { Button } from '@yourorg/design-system';
+import { Modal } from './Modal';
+import { Button } from '../Button/Button';
 
-const meta = {
+const meta: Meta<typeof Modal> = {
   title: 'Components/Modal',
   component: Modal,
+  args: {
+    open: false,
+    onClose: () => {},
+    title: '',
+    children: null,
+  },
   argTypes: {
     open: { control: 'boolean' },
     title: { control: 'text' },
@@ -15,7 +21,7 @@ const meta = {
     danger: { control: 'boolean' },
     size: { control: 'select', options: ['xs', 'sm', 'md', 'lg'] },
   },
-} satisfies Meta<typeof Modal>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;

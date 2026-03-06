@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button as CarbonButton } from '@carbon/react';
-import type { ButtonBaseProps } from '@carbon/react';
+import { type ButtonBaseProps, Button as CarbonButton } from '@carbon/react'
 
 export interface ButtonProps extends ButtonBaseProps {
   /** Visual variant of the button */
