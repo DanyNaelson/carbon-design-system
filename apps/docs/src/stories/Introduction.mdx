@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduction" />
+
+# Design System
+
+A component library built on **Carbon Design System** with custom brand tokens, themes, and layout primitives — designed to power AI-generated storefronts.
+
+## Packages
+
+| Package | Description |
+|---|---|
+| `@yourorg/design-system` | UI components, tokens, and theme provider |
+| `@yourorg/store-engine` | JSON-driven renderer, layout presets, state machine |
+| `@yourorg/ai-bridge` | Translates AI intents into store structures |
+| `@yourorg/mcp-adapter` | Validates and normalizes MCP messages |
+
+## Getting Started
+
+```tsx
+import { ThemeProvider, Button, Card } from '@yourorg/design-system';
+
+function App() {
+  return (
+    <ThemeProvider defaultMode="light">
+      <Card title="Hello">
+        <Button variant="primary">Click me</Button>
+      </Card>
+    </ThemeProvider>
+  );
+}
+```
+
+## Architecture
+
+```
+User → AI Chat → ai-bridge (IntentTranslator)
+                      ↓
+               mcp-adapter (validate + normalize)
+                      ↓
+               store-engine (StoreBuilder → JSON)
+                      ↓
+               store-engine (JsonRenderer + ComponentRegistry)
+                      ↓
+               design-system (Button, Card, Grid, Modal …)
+                      ↓
+                   Browser
+```
